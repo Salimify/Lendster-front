@@ -42,7 +42,7 @@ const Model: ModelType = {
       const response = yield call(queryRule, payload);
       yield put({
         type: 'save',
-        payload: response,
+        payload: {list: response},
       });
     },
     *add({ payload, callback }, { call, put }) {

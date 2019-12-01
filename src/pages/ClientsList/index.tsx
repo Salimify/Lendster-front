@@ -93,16 +93,16 @@ class TableList extends Component<TableListProps, TableListState> {
 
   columns: StandardTableColumnProps[] = [
     {
-      title: 'Rule name',
+      title: 'Client name',
       dataIndex: 'name',
     },
     {
-      title: 'Description',
-      dataIndex: 'desc',
+      title: 'Job',
+      dataIndex: 'job',
     },
     {
-      title: 'Number of service calls',
-      dataIndex: 'callNo',
+      title: 'Loaned Amount',
+      dataIndex: 'loaned',
       sorter: true,
       align: 'right',
       render: (val: string) => `${val} TND`,
@@ -110,43 +110,36 @@ class TableList extends Component<TableListProps, TableListState> {
       needTotal: true,
     },
     {
-      title: 'Status',
-      dataIndex: 'status',
-      filters: [
-        {
-          text: status[0],
-          value: '0',
-        },
-        {
-          text: status[1],
-          value: '1',
-        },
-        {
-          text: status[2],
-          value: '2',
-        },
-        {
-          text: status[3],
-          value: '3',
-        },
-      ],
-      render(val: IStatusMapType) {
-        return <Badge status={statusMap[val]} text={status[val]} />;
-      },
-    },
-    {
-      title: 'Last scheduled time',
-      dataIndex: 'updatedAt',
+      title: 'Paid Amount',
+      dataIndex: 'paid',
       sorter: true,
-      render: (val: string) => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
+      align: 'right',
+      render: (val: string) => `${val} TND`,
+      // mark to display a total number
+      needTotal: true,
     },
     {
-      title: 'Operating',
-      render: (text, record) => (
+      title: 'Valided Amount',
+      dataIndex: 'valided',
+      sorter: true,
+      align: 'right',
+      render: (val: string) => `${val} TND`,
+      // mark to display a total number
+      needTotal: true,
+    },
+    {
+      title: 'Email',
+      dataIndex: 'email',
+    },
+    {
+      title: 'Phone',
+      dataIndex: 'phone',
+    },
+    {
+      title: 'Details',
+      render: (phone, record) => (
         <Fragment>
-          <a onClick={() => this.handleUpdateModalVisible(true, record)}>Configuration</a>
-          <Divider type="vertical" />
-          <a href="">Subscribe to alerts</a>
+          <a onClick={() => this.handleUpdateModalVisible(true, record)}>Details</a>
         </Fragment>
       ),
     },
@@ -426,7 +419,7 @@ class TableList extends Component<TableListProps, TableListState> {
       clientsList: { data },
       loading,
     } = this.props;
-
+    console.log(data)
     const { selectedRows, modalVisible, updateModalVisible, stepFormValues } = this.state;
     const menu = (
       <Menu onClick={this.handleMenuClick} selectedKeys={[]}>

@@ -93,16 +93,16 @@ class TableList extends Component<TableListProps, TableListState> {
 
   columns: StandardTableColumnProps[] = [
     {
-      title: 'Rule name',
-      dataIndex: 'name',
+      title: 'Purpose',
+      render: (phone, record) => (
+        <Fragment>
+          <a onClick={() => this.handleUpdateModalVisible(true, record)}>{record.purpose}</a>
+        </Fragment>
+      ),
     },
     {
-      title: 'Description',
-      dataIndex: 'desc',
-    },
-    {
-      title: 'Number of service calls',
-      dataIndex: 'callNo',
+      title: 'Amount Requested',
+      dataIndex: 'amountRequested',
       sorter: true,
       align: 'right',
       render: (val: string) => `${val} TND`,
@@ -112,43 +112,14 @@ class TableList extends Component<TableListProps, TableListState> {
     {
       title: 'Status',
       dataIndex: 'status',
-      filters: [
-        {
-          text: status[0],
-          value: '0',
-        },
-        {
-          text: status[1],
-          value: '1',
-        },
-        {
-          text: status[2],
-          value: '2',
-        },
-        {
-          text: status[3],
-          value: '3',
-        },
-      ],
-      render(val: IStatusMapType) {
-        return <Badge status={statusMap[val]} text={status[val]} />;
-      },
     },
     {
-      title: 'Last scheduled time',
-      dataIndex: 'updatedAt',
-      sorter: true,
-      render: (val: string) => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
+      title: 'Date',
+      dataIndex: 'date',
     },
     {
-      title: 'Operating',
-      render: (text, record) => (
-        <Fragment>
-          <a onClick={() => this.handleUpdateModalVisible(true, record)}>Configuration</a>
-          <Divider type="vertical" />
-          <a href="">Subscribe to alerts</a>
-        </Fragment>
-      ),
+      title: 'termsIn',
+      dataIndex: 'termsIn',
     },
   ];
 
@@ -269,6 +240,7 @@ class TableList extends Component<TableListProps, TableListState> {
   };
 
   handleUpdateModalVisible = (flag?: boolean, record?: FormValueType) => {
+    console.log(record);
     this.setState({
       updateModalVisible: !!flag,
       stepFormValues: record || {},
@@ -289,14 +261,16 @@ class TableList extends Component<TableListProps, TableListState> {
   };
 
   handleUpdate = (fields: FormValueType) => {
+    console.log(fields);
     const { dispatch } = this.props;
     dispatch({
       type: 'loansList/update',
       payload: {
-        name: fields.name,
-        desc: fields.desc,
-        key: fields.key,
+        id: fields.id,
+        action: fields.action,
       },
+    }).then(()=>{
+      this.handleFormReset();
     });
 
     message.success('Configuration succeeded');
@@ -426,7 +400,7 @@ class TableList extends Component<TableListProps, TableListState> {
       loansList: { data },
       loading,
     } = this.props;
-
+console.log(data)
     const { selectedRows, modalVisible, updateModalVisible, stepFormValues } = this.state;
     const menu = (
       <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
@@ -475,7 +449,7 @@ class TableList extends Component<TableListProps, TableListState> {
         </Card>
         <CreateForm {...parentMethods} modalVisible={modalVisible} />
         {stepFormValues && Object.keys(stepFormValues).length ? (
-          <UpdateForm
+          <UpdateForm className="test"
             {...updateMethods}
             updateModalVisible={updateModalVisible}
             values={stepFormValues}

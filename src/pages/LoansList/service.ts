@@ -1,8 +1,9 @@
 import request from '@/utils/request';
 import { TableListParams } from './data.d';
+import {backendLink} from "../../../config/backendLink";
 
 export async function queryRule(params: TableListParams) {
-  return request('/api/rule', {
+  return request(backendLink+'/api/applications', {
     params,
   });
 }
@@ -28,11 +29,7 @@ export async function addRule(params: TableListParams) {
 }
 
 export async function updateRule(params: TableListParams) {
-  return request('/api/rule', {
-    method: 'POST',
-    data: {
-      ...params,
-      method: 'update',
-    },
+  return request(backendLink+'/api/applications/'+params.id+'/'+params.action, {
+    method: 'PUT',
   });
 }

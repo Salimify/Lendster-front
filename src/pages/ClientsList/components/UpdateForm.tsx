@@ -219,7 +219,7 @@ class UpdateForm extends Component<UpdateFormProps, UpdateFormState> {
         width={640}
         bodyStyle={{ padding: '32px 40px 48px' }}
         destroyOnClose
-        title="规则配置"
+        title="jksldqlsdqs"
         visible={updateModalVisible}
         footer={this.renderFooter(currentStep)}
         onCancel={() => handleUpdateModalVisible(false, values)}
