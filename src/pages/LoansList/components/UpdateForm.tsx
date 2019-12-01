@@ -146,7 +146,7 @@ class UpdateForm extends Component<UpdateFormProps, UpdateFormState> {
         okText='Approve'
         cancelText='Decline'
         visible={updateModalVisible}
-        onCancel={this.handleCancel(values)}
+        onCancel={() => handleUpdateModalVisible(false, values)}
         afterClose={() => handleUpdateModalVisible()}
       >
         {this.renderContent(currentStep, formVals)}

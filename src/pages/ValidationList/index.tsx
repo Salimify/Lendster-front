@@ -16,6 +16,7 @@ import {
   Row,
   Select,
   Result,
+  Upload,
 } from 'antd';
 import React, { Component } from 'react';
 
@@ -146,7 +147,7 @@ class ValidationList extends Component<
     const {
       form: { getFieldDecorator },
     } = this.props;
-
+    console.log(list)
     const { visible, done, current = {} } = this.state;
 
     const editAndDelete = (key: string, currentItem: BasicListItemDataType) => {
@@ -164,7 +165,7 @@ class ValidationList extends Component<
 
     const modalFooter = done
       ? { footer: null, onCancel: this.handleDone }
-      : { okText: '保存', onOk: this.handleSubmit, onCancel: this.handleCancel };
+      : { okText: 'Save', onOk: this.handleSubmit, onCancel: this.handleCancel };
 
     const Info: React.FC<{
       title: React.ReactNode;
@@ -197,21 +198,21 @@ class ValidationList extends Component<
     };
 
     const ListContent = ({
-      data: { owner, createdAt, percent, status },
+      data: { name, createdAt, percent, status },
     }: {
       data: BasicListItemDataType;
     }) => (
       <div className={styles.listContent}>
         <div className={styles.listContentItem}>
-          <span>Owner</span>
-          <p>{owner}</p>
+          <span>Name</span>
+          <p>{name}</p>
         </div>
         <div className={styles.listContentItem}>
-          <span>Starting time</span>
+          <span>Adding time</span>
           <p>{moment(createdAt).format('YYYY-MM-DD HH:mm')}</p>
         </div>
         <div className={styles.listContentItem}>
-          <Progress percent={percent} status={status} strokeWidth={6} style={{ width: 180 }} />
+          <Progress percent={Math.floor(Math.random() * 100)} status={status} strokeWidth={6} style={{ width: 180 }} />
         </div>
       </div>
     );
@@ -251,13 +252,13 @@ class ValidationList extends Component<
       }
       return (
         <Form onSubmit={this.handleSubmit}>
-          <FormItem label="Mission name" {...this.formLayout}>
+          <FormItem label="Invoice name" {...this.formLayout}>
             {getFieldDecorator('title', {
               rules: [{ required: true, message: 'Please enter a task name' }],
               initialValue: current.title,
             })(<Input placeholder="Please enter" />)}
           </FormItem>
-          <FormItem label="Starting time" {...this.formLayout}>
+          <FormItem label="Date" {...this.formLayout}>
             {getFieldDecorator('createdAt', {
               rules: [{ required: true, message: 'Please select a start time' }],
               initialValue: current.createdAt ? moment(current.createdAt) : null,
@@ -270,18 +271,19 @@ class ValidationList extends Component<
               />,
             )}
           </FormItem>
-          <FormItem label="Task manager" {...this.formLayout}>
+          <FormItem label="Upload Invoice" {...this.formLayout}>
             {getFieldDecorator('owner', {
               rules: [{ required: true, message: 'Please select a task manager\n' }],
               initialValue: current.owner,
             })(
-              <Select placeholder="please choose">
-                <SelectOption value="Fu Xiaoxiao">Fu Xiaoxiao</SelectOption>
-                <SelectOption value="Fu Xiaoxiao">Fu Xiaoxiao</SelectOption>
-              </Select>,
+              <Upload>
+                <Button>
+                  <Icon type="upload" /> Upload
+                </Button>
+              </Upload>,
             )}
           </FormItem>
-          <FormItem {...this.formLayout} label="product description">
+          <FormItem {...this.formLayout} label="Invoice description">
             {getFieldDecorator('subDescription', {
               rules: [{ message: 'Please enter a product description of at least five characters！', min: 5 }],
               initialValue: current.subDescription,
@@ -297,13 +299,13 @@ class ValidationList extends Component<
             <Card bordered={false}>
               <Row>
                 <Col sm={8} xs={24}>
-                  <Info title="My to-do" value="8 Tasks" bordered />
+                  <Info title="Total Expenses" value="50 Expenses" bordered />
                 </Col>
                 <Col sm={8} xs={24}>
-                  <Info title="Task average processing time this week" value="32 minute" bordered />
+                  <Info title="Total Approved" value="24 Expenses" bordered />
                 </Col>
                 <Col sm={8} xs={24}>
-                  <Info title="Tasks completed this week" value="24 Tasks" />
+                  <Info title="Total In Progress" value="26 Expenses" />
                 </Col>
               </Row>
             </Card>
@@ -350,9 +352,9 @@ class ValidationList extends Component<
                     ]}
                   >
                     <List.Item.Meta
-                      avatar={<Avatar src={item.logo} shape="square" size="large" />}
-                      title={<a href={item.href}>{item.title}</a>}
-                      description={item.subDescription}
+                      avatar={<img src="/invoice.png" width={50}/>}
+                      title={<a href="#">{item.proof}</a>}
+                      description={item.name}
                     />
                     <ListContent data={item} />
                   </List.Item>
@@ -363,7 +365,7 @@ class ValidationList extends Component<
         </PageHeaderWrapper>
 
         <Modal
-          title={done ? null : `task${current ? 'edit' : 'Add to'}`}
+        title='Add Invoice'
           className={styles.standardListForm}
           width={640}
           bodyStyle={done ? { padding: '72px 0' } : { padding: '28px 0 0' }}

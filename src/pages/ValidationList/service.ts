@@ -1,14 +1,13 @@
 import request from '@/utils/request';
 import { BasicListItemDataType } from './data.d';
+import {backendLink} from "../../../config/backendLink";
 
 interface ParamsType extends Partial<BasicListItemDataType> {
   count?: number;
 }
 
 export async function queryFakeList(params: ParamsType) {
-  return request('/api/fake_list', {
-    params,
-  });
+  return request(backendLink+'/api/expenses');
 }
 
 export async function removeFakeList(params: ParamsType) {

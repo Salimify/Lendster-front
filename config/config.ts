@@ -126,13 +126,6 @@ export default {
               authority: ['admin'],
             },
             {
-              name: 'Validation',
-              icon: 'file-done',
-              path: '/validation',
-              component: './ValidationList',
-              authority: ['admin'],
-            },
-            {
               name: 'Applications',
               icon: 'file-done',
               path: '/applications',
@@ -156,6 +149,13 @@ export default {
                   component: './404',
                 },
               ],
+            },
+            {
+              name: 'Validation',
+              icon: 'project',
+              path: '/validation',
+              component: './ValidationList',
+              authority: ['admin', 'user'],
             },
             {
               component: './404',
