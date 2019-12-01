@@ -274,7 +274,7 @@ class Pie extends Component<PieProps, PieState> {
                 {subTitle && <h4 className="pie-sub-title">{subTitle}</h4>}
                 {/* eslint-disable-next-line */}
                 {total && (
-                  <div className="pie-stat">{typeof total === 'function' ? total() : total}</div>
+                  <div className="pie-stat">256</div>
                 )}
               </div>
             )}
@@ -296,7 +296,6 @@ class Pie extends Component<PieProps, PieState> {
                 <span className={styles.percent}>
                   {`${(Number.isNaN(item.percent) ? 0 : item.percent * 100).toFixed(2)}%`}
                 </span>
-                <span className={styles.value}>{valueFormat ? valueFormat(item.y) : item.y}</span>
               </li>
             ))}
           </ul>

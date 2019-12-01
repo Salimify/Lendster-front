@@ -127,11 +127,11 @@ class StandardTable extends Component<StandardTableProps<TableListItem>, Standar
           <Alert
             message={
               <Fragment>
-                已选择 <a style={{ fontWeight: 600 }}>{selectedRowKeys.length}</a> 项&nbsp;&nbsp;
+                Chosen <a style={{ fontWeight: 600 }}>{selectedRowKeys.length}</a> item &nbsp;&nbsp;
                 {needTotalList.map((item, index) => (
                   <span style={{ marginLeft: 8 }} key={item.dataIndex}>
                     {item.title}
-                    总计&nbsp;
+                    Clear&nbsp;
                     <span style={{ fontWeight: 600 }}>
                       {item.render
                         ? item.render(item.total, item as TableListItem, index)
@@ -140,7 +140,7 @@ class StandardTable extends Component<StandardTableProps<TableListItem>, Standar
                   </span>
                 ))}
                 <a onClick={this.cleanSelectedKeys} style={{ marginLeft: 24 }}>
-                  清空
+                  Clear
                 </a>
               </Fragment>
             }

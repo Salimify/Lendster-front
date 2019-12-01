@@ -133,11 +133,29 @@ export default {
               authority: ['admin'],
             },
             {
-              name: 'My Applications',
+              name: 'Applications',
               icon: 'file-done',
-              path: '/userapplications',
-              component: './UserApplications',
+              path: '/applications',
               authority: ['user'],
+              routes: [
+                {
+                  name: 'My Applications',
+                  icon: 'check-circle',
+                  path: '/applications/mine',
+                  component: './UserApplications',
+                  authority: ['user'],
+                },
+                {
+                  name: 'Submit Application',
+                  icon: 'plus',
+                  path: '/applications/add',
+                  component: './AddUserApplication',
+                  authority: ['user'],
+                },
+                {
+                  component: './404',
+                },
+              ],
             },
             {
               component: './404',

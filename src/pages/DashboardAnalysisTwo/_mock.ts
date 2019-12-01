@@ -25,7 +25,7 @@ for (let i = 0; i < fakeY2.length; i += 1) {
 const salesData = [];
 for (let i = 0; i < 12; i += 1) {
   salesData.push({
-    x: `${i + 1}月`,
+    x: `${i + 1}`,
     y: Math.floor(Math.random() * 1000) + 200,
   });
 }
@@ -41,78 +41,58 @@ for (let i = 0; i < 50; i += 1) {
 }
 const salesTypeData = [
   {
-    x: 'Materials',
+    x: 'Agriculture',
     y: 4544,
   },
   {
-    x: 'Industrial',
+    x: 'Startup',
     y: 3321,
   },
   {
-    x: 'Improvements',
+    x: 'Education',
     y: 3113,
   },
   {
-    x: 'Software',
+    x: 'Industry',
     y: 2341,
-  },
-  {
-    x: 'Furniture',
-    y: 1231,
-  },
-  {
-    x: 'Others',
-    y: 1231,
   },
 ];
 
 const salesTypeDataOnline = [
   {
-    x: 'Materials',
-    y: 244,
+    x: 'Agriculture',
+    y: 4544,
   },
   {
-    x: 'Industrial',
-    y: 321,
+    x: 'Startup',
+    y: 3321,
   },
   {
-    x: 'Improvements',
-    y: 311,
+    x: 'Education',
+    y: 3113,
   },
   {
-    x: 'Software',
-    y: 41,
-  },
-  {
-    x: 'Furniture',
-    y: 121,
-  },
-  {
-    x: 'Others',
-    y: 111,
+    x: 'Industry',
+    y: 2341,
   },
 ];
 
 const salesTypeDataOffline = [
   {
-    x: '家用电器',
-    y: 99,
+    x: 'Agriculture',
+    y: 4544,
   },
   {
-    x: '食用酒水',
-    y: 188,
+    x: 'Startup',
+    y: 3321,
   },
   {
-    x: '个护健康',
-    y: 344,
+    x: 'Education',
+    y: 3113,
   },
   {
-    x: '服饰箱包',
-    y: 255,
-  },
-  {
-    x: '其他',
-    y: 65,
+    x: 'Industry',
+    y: 2341,
   },
 ];
 

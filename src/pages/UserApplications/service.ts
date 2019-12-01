@@ -1,8 +1,9 @@
 import request from '@/utils/request';
-import { TableListParams } from './data.d';
+import {TableListParams} from './data.d';
+import {backendLink} from "../../../config/backendLink";
 
 export async function queryRule(params: TableListParams) {
-  return request('/api/rule', {
+  return request(backendLink + '/api/applications/client/1', {
     params,
   });
 }

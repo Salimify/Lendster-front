@@ -205,15 +205,6 @@ class DashboardAnalysisTwo extends Component<
               </Suspense>
             </Col>
           </Row>
-          <Suspense fallback={null}>
-            <OfflineData
-              activeKey={activeKey}
-              loading={loading}
-              offlineData={offlineData}
-              offlineChartData={offlineChartData}
-              handleTabChange={this.handleTabChange}
-            />
-          </Suspense>
         </React.Fragment>
       </GridContent>
     );

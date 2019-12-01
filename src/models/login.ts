@@ -47,7 +47,7 @@ const Model: LoginModelType = {
         const params = getPageQuery();
         let { redirect } = params as { redirect: string };
         if (response.currentAuthority === "user") {
-          window.location.href = '/userapplications';
+          window.location.href = '/applications/mine';
           return;
         }
         if (redirect) {

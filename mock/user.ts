@@ -7,10 +7,25 @@ function getFakeCaptcha(req: Request, res: Response) {
 export default {
   // 支持值为 Object 和 Array
   'GET /api/currentUser': {
-    name: 'User',
+    id: 1,
+    name: "mobile Fish",
+    job: "Home Loan Account Table Computer",
+    address: "Trace",
+    email: "Lazaro_Conroy2@yahoo.com",
+    phone: "(978) 920-1916",
+    loaned: 30424,
+    paid: 61165,
+    valided: 52475,
+    bank: {
+      id: 1,
+      name: "mobile Fish",
+      branch: "Home Loan Account Table Computer",
+      accountNumber: "Trace",
+      accountType: "Savings Account alarm"
+    },
+    expenses: null,
     avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
     userid: '00000001',
-    email: 'antdesign@alipay.com',
     signature: '海纳百川，有容乃大',
     title: '交互专家',
     group: '蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED',

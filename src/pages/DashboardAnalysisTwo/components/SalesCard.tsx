@@ -11,13 +11,37 @@ import styles from '../style.less';
 const { RangePicker } = DatePicker;
 const { TabPane } = Tabs;
 
-const rankingListData: { title: string; total: number }[] = [];
-for (let i = 0; i < 7; i += 1) {
-  rankingListData.push({
-    title: formatMessage({ id: 'dashboardanalysistwo.analysis.test' }, { no: i }),
-    total: 323234,
-  });
-}
+const rankingListData: { title: string; total: number }[] = [
+  {
+    title: 'Amine Amir',
+    total: 2500,
+  },
+  {
+    title: 'Ahmed Ali',
+    total: 7500,
+  },
+  {
+    title: 'Walid Hassine',
+    total: 25000,
+  },
+  {
+    title: 'Amina Ben Fradj',
+    total: 25000,
+  },
+  {
+    title: 'Christine Eloa',
+    total: 15000,
+  },
+  {
+    title: 'Mounira Ajmi',
+    total: 21000,
+  },
+  {
+    title: 'Samir Hattab',
+    total: 25500,
+  },
+];
+
 
 const SalesCard = ({
   rangePickerValue,

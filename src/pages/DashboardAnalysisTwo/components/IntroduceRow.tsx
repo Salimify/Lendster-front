@@ -72,13 +72,13 @@ const IntroduceRow = ({ loading, visitData }: { loading: boolean; visitData: Vis
             <Icon type="info-circle-o" />
           </Tooltip>
         }
-        total={numeral(8846).format('0,0')}
+        total={numeral(24).format('0,0')}
         footer={
           <Field
             label={
               <FormattedMessage id="dashboardanalysistwo.analysis.day-visits" defaultMessage="Daily Visits" />
             }
-            value={numeral(1234).format('0,0')}
+            value={numeral(2).format('0,0')}
           />
         }
         contentHeight={46}
@@ -100,7 +100,7 @@ const IntroduceRow = ({ loading, visitData }: { loading: boolean; visitData: Vis
             <Icon type="info-circle-o" />
           </Tooltip>
         }
-        total={numeral(6560).format('0,0')}
+        total={numeral(45).format('0,0')}
         footer={
           <Field
             label={
@@ -142,11 +142,7 @@ const IntroduceRow = ({ loading, visitData }: { loading: boolean; visitData: Vis
             <Trend flag="up" style={{ marginRight: 16 }}>
               <FormattedMessage id="dashboardanalysistwo.analysis.week" defaultMessage="Weekly Changes" />
               <span className={styles.trendText}>12%</span>
-            </Trend>
-            <Trend flag="down">
-              <FormattedMessage id="dashboardanalysistwo.analysis.day" defaultMessage="Weekly Changes" />
-              <span className={styles.trendText}>11%</span>
-            </Trend>
+            </Trend>44
           </div>
         }
         contentHeight={46}
